@@ -1,0 +1,13 @@
+---
+- name: Update and upgrade system packages
+  hosts: all
+  become: true  # Root yetkisi gereklidir
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist  # Paketleri sistem çapında yükseltir
+        autoremove: yes
